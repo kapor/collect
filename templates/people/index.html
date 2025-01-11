@@ -1,0 +1,59 @@
+{% extends "base/index.html" %}
+{% block body_block %}
+
+
+{% if user.is_authenticated %}
+
+	<h1>People</h1>
+
+	<div class="test_p">
+		{% if page_obj.object_list %}
+		<table>
+			<thread>
+				<th class="col_header">ID</th>
+				<th class="col_header">Handle</th>
+				<th class="col_header">Location</th>
+				<th class="col_header">Photo</th>
+			</thread>
+
+		{% for acc in page_obj.object_list %}
+
+		<tr>
+			<td>{{ acc.user_id }}</td>
+			<td>{{ acc.user|upper }}</td>
+			<td>{{ acc.website|cut:'https://'|cut:'http://' }}</td>
+			{% if acc.picture %}
+			<td><div class=crop>
+				<img class="photo" src="/media/{{ acc.picture }}">
+				</div>
+			{% else %}
+			<td><div class=crop style=>
+				<img class="photo_blank" src="/media/profile_pics/photo_blank.jpg">
+				</div>
+			{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+		</table>
+
+
+		{% include 'paginate.html' %} 
+
+		{% else %}
+		<h1>No people for you</h1>
+
+	{% endif %}
+	</div>
+
+{% else %}
+
+<h1>No people for you</h1>
+<br>
+<h1>
+<a href="{% url 'login' %}">Log in</a> 
+or <a href="{% url 'join' %}">Join</a>
+</h1>
+
+{% endif %}
+
+{% endblock %}

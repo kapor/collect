@@ -1,0 +1,26 @@
+{% extends "base/index.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="content_block">
+	{% if user.is_authenticated %}
+	<h1>Logout to login</h1>
+	{% else %}
+	<h1>Login</h1>
+	<div class="forms">
+		<form class="" action="{% url 'login' %}" method="POST">
+			{% csrf_token %}
+			<div>
+				<label for="username">Username:</label>
+				<input type="text" name="username" placeholder="">
+			</div>
+			<div>
+				<label for="password">Password:</label>
+				<input type="password" name="password" placeholder="">
+			</div>
+			<input type="submit" class="btn" value="Submit">
+		</form>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

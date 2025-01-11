@@ -1,0 +1,88 @@
+{% extends "base/index.html" %}
+{% block body_block %}
+
+
+
+{% if user.is_authenticated %}
+
+	<h1>{{ user | capfirst }}'s Stuff</h1>
+
+	{% if page_obj.object_list %}
+		<div class="test_p">
+
+			<table>
+			<thread>
+				<th class="col_header">ID</th>
+				<th class="col_header">Title</th>
+				<th class="col_header">Author</th>
+				<th class="col_header">Year</th>
+				<!-- <th class="col_header">Publisher</th> -->
+				<!-- <th class="col_header">Artist</th> -->
+				<!-- <th class="col_header">Quality</th> -->
+				<!-- <th class="col_header">Price</th> -->
+				<!-- <th class="col_header">Location</th> -->
+				<th class="col_header">Genre</th>
+				<!-- <th class="col_header">Weight</th> -->
+				<!-- <th class="col_header">Pages</th> -->
+				<!-- <th class="col_header">ISBN</th> -->
+				<!-- <th class="col_header">Description</th> -->
+				<!-- <th class="col_header">Image</th> -->
+				<!-- <th class="col_header">Notes</th> -->
+				<th class="col_header">Cover</th>
+			</thread>
+
+			{% for acc in page_obj.object_list %}
+
+			<tr>
+				<!-- <td><a href="update/{{ acc.id }}">{{ acc.id }}</a></td> -->
+				<td>{{ acc.id }}</td>
+				<td>{{ acc.title }}</td>
+				<td>{{ acc.author }}</td>
+				<td>{{ acc.year }}</td>
+				<!-- <td>{{ acc.publisher }}</td> -->
+				<!-- <td>{{ acc.artist }}</td> -->
+				<!-- <td>{{ acc.quality }}</td> -->
+				<!-- <td>{{ acc.price }}</td> -->
+				<!-- <td>{{ acc.location }}</td> -->
+				<td>{{ acc.genre }}</td>
+				<!-- <td>{{ acc.weight }}</td> -->
+				<!-- <td>{{ acc.pages }}</td> -->
+				<!-- <td>{{ acc.isbn }}</td> -->
+				<!-- <td>{{ acc.description }}</td> -->
+				<td>
+					<div class=crop>
+						{% if acc.image %}
+						<img class="photo" src="/media/{{ acc.image }}">
+						{% else %}
+						<img class="photo_blank" src="/media/covers/blank.jpg">
+						{% endif %}
+					</div>
+				</td>
+				<!-- <td>{{ acc.notes }}</td> -->
+
+				</tr>
+
+			{% endfor %}
+
+			</table>
+
+		</div>
+
+		{% include 'paginate.html' %} 
+
+		{% else %}
+		<h1>Nothing added yet</h1>
+
+	{% endif %}
+
+{% else %}
+<h1>Empty :(</h1>
+<br>
+<h1>
+<a href="{% url 'login' %}">Log in</a> 
+or <a href="{% url 'join' %}">Join</a>
+</h1>
+
+{% endif %}
+
+{% endblock %}
