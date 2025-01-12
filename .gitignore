@@ -13,8 +13,9 @@ db.sqlite3
 *.sublime-project
 *.sublime-workspace
 *.DS_Store
-/django-taggit
-/infinite-scroll
+django-taggit
+infinite-scroll
+_plugins
 
 # C extensions
 *.so
