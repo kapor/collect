@@ -46,7 +46,7 @@ def books(request):
 
 def books_admin(request):
     book_list = BookAdmin.objects.order_by('-id')
-    book_table = Paginator(book_list, 100)
+    book_table = Paginator(book_list, 200)
     page_number = request.GET.get('page')
     try:
         page = book_table.get_page(page_number)

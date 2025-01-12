@@ -1,0 +1,21 @@
+{% extends "base/index.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="content_block">
+	{% if user.is_authenticated %}
+	<h1>You've already joined</h1>
+	{% else %}
+	<h1>Join</h1>
+		<div class="forms">
+			<form method="POST" enctype="multipart/form-data">
+				{{user_form}}
+				{{prof_form}}
+				{% csrf_token %}
+				<input type="submit" class="btn" value="JOIN NOW">
+			</form>
+		</div>
+	{% endif %}
+
+</div>
+{% endblock %}

@@ -7,16 +7,19 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from collection.models import BookList
 from profiles.models import UserInfo
-from django.contrib.auth.models import User
 from profiles.forms import UserForm1, UserForm2
-from django.views.generic import View, TemplateView
-
-
-from . import forms
+from . import models, forms
+from django.contrib.auth.models import User
+from django.views.generic import View, TemplateView, ListView, DetailView
 import os
 
 # Create your views here.
+class LikeList(ListView):
+    model = models.Likes
 
+class BookMarksDetail(DetailView):
+    model = models.Bookmarks
+    template_name = "profiles/bookmarks_detail.html"
 
 
 class index(View):
