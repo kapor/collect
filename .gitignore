@@ -3,6 +3,15 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+*.pyc
+__pycache__
+db.sqlite3
+/env
+*.env
+.sublime-project
+.sublime-workspace
+
 # C extensions
 *.so
 

@@ -1,0 +1,582 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"prof",
+				"prof_form"
+			],
+			[
+				"font-",
+				"font-weight"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"bot",
+				"botcatch"
+			],
+			[
+				"blu",
+				"lightblue"
+			],
+			[
+				"light",
+				"lightcoral"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"static",
+				"STATIC_DIR"
+			],
+			[
+				"TEMPL",
+				"TEMPLATE_DIR"
+			],
+			[
+				"TEMP",
+				"TEMPLATES"
+			],
+			[
+				"de",
+				"deposit"
+			],
+			[
+				"wi",
+				"widthdraw"
+			],
+			[
+				"des",
+				"description_text"
+			],
+			[
+				"descr",
+				"description\tcommands.description"
+			],
+			[
+				"up",
+				"update_btn"
+			],
+			[
+				"del",
+				"delete_btn"
+			],
+			[
+				"__",
+				"__name__"
+			],
+			[
+				"class1",
+				"class1_method2"
+			],
+			[
+				"c",
+				"class1_method1"
+			],
+			[
+				"l",
+				"self"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"backgr",
+				"background-position"
+			],
+			[
+				"background-",
+				"background-size"
+			],
+			[
+				"di",
+				"flex-direction"
+			],
+			[
+				"yell",
+				"yellowgreen"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"tile",
+				"tile_bg_pink"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"tile_bg",
+				"tile_bg_blue"
+			],
+			[
+				"tile_bg_b",
+				"tile_bg_light_blue"
+			],
+			[
+				"tile_b",
+				"tile_bg_pink"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"flex",
+				"flex-direction"
+			],
+			[
+				"fle",
+				"flex-direction"
+			],
+			[
+				"billboard_",
+				"billboard_portait"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"fl",
+				"flex-direction"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"colu",
+				"column-reverse"
+			],
+			[
+				"icon",
+				"iconography"
+			],
+			[
+				"flex-",
+				"flex-direction"
+			],
+			[
+				"gap",
+				"column-gap"
+			],
+			[
+				"get",
+				"getElementsByClassName"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packag",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"package install",
+				"Package Control: Advanced Install Packages"
+			],
+			[
+				"outline",
+				"Browse Mode: Outline (Right)"
+			],
+			[
+				"test",
+				"Test Runner: Run tests with coverage"
+			],
+			[
+				"",
+				"Set Syntax: Git Ignore"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"insta",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"colorthe",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"install",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 172.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/aaronkapor/repos/collect"
+	],
+	"file_history":
+	[
+		"/Users/aaronkapor/repos/python/djbooks/books/manage.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/static/css/forms.css",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/join/login.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/join/reg.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/people/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/admin.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/project_01/urls.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/project_01/settings.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/reg/login.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/reg/join.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/reg/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/urls.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/views.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/forms.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/db.sqlite3",
+		"/Users/aaronkapor/repos/python/djtest/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/forms_model.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/base/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/join/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/migrations/0002_authgroup_authgrouppermissions_authpermission_and_more.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/base/modal.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/reg/forms.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/reg/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/reg/admin.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/join/views.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/join/admin.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/join/forms.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/join/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/join/urls.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/fakers.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/urls.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/views.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/list.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/paginate.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/templatetags/my_tags.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/books/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/tinas_file.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/static/css/styles.css",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people/templatetags/__init__.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/users/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/entry/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/forms.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/admin.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/entry/apps.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/people.db",
+		"/Users/aaronkapor/repos/python/djtest/project_01/test_01/views.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/test_01/urls.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/test_01/forms.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/users/forms.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/users/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/users/views.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/users/admin.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/users/apps.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/users/urls.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/users/migrations/0001_initial.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/test_01/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/test_01/admin.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/sign_up/admin.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/sign_up/views.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/sign_up/models.py",
+		"/Users/aaronkapor/repos/python/djtest/project_01/static/css/elements.css",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/help/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/test_01/index.html",
+		"/Users/aaronkapor/repos/python/djtest/project_01/templates/index.html",
+		"/Users/aaronkapor/repos/python/djtest/booklist/booklist/settings.py",
+		"/Users/aaronkapor/repos/python/djtest/booklist/manage.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/add/admin.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/add/models.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/add/views.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/update/admin.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/update/models.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/update/views.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/books/settings.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/books/urls.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/update/urls.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/static/css/styles.css",
+		"/Users/aaronkapor/repos/python/djbooks/books/templates/add/index.html",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/sqlformat",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/pip3.13",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/pip3",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/pip",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/faker",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/activate.fish",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/activate.csh",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/activate",
+		"/Users/aaronkapor/repos/python/djbooks/.env/pyvenv.cfg",
+		"/Users/aaronkapor/repos/python/djbooks/.env/bin/django-admin",
+		"/Users/aaronkapor/repos/python/djbooks/books/bookadd/urls.py",
+		"/Users/aaronkapor/repos/python/djtesting/books/bookadd/views.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/bookupdate/views.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/bookupdate/urls.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/bookadd/views.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/templates/update/index.html",
+		"/Users/aaronkapor/repos/python/djbooks/books/templates/home.html",
+		"/Users/aaronkapor/repos/python/djbooks/books/templates/index.html",
+		"/Users/aaronkapor/repos/python/djbooks/books/templates/bookadd/index.html",
+		"/Users/aaronkapor/repos/python/djbooks/books/templates/bookadd.html",
+		"/Users/aaronkapor/repos/python/djbooks/books/bookadd/templates/template1.html",
+		"/Users/aaronkapor/repos/python/account/godfred.txt",
+		"/Users/aaronkapor/repos/python/account/billy.txt",
+		"/Users/aaronkapor/repos/python/account/balance.txt",
+		"/Users/aaronkapor/repos/python/account/acc_readonly.py",
+		"/Users/aaronkapor/repos/python/account/account.py",
+		"/Users/aaronkapor/repos/python/bookdesk/app/fe.py",
+		"/Users/aaronkapor/repos/python/bookdesk/app/be.py",
+		"/Users/aaronkapor/repos/python/djbooks/books/books/wsgi.py",
+		"/Users/aaronkapor/repos/python/dj_books/main/main/settings.py",
+		"/Users/aaronkapor/repos/python/dj_books/booklist/views.py",
+		"/Users/aaronkapor/repos/python/dj_books/main/main/urls.py",
+		"/Users/aaronkapor/repos/python/dj_books/add/views.py",
+		"/Users/aaronkapor/repos/python/dj_books/be.py",
+		"/Users/aaronkapor/repos/python/django/first/first/settings.py",
+		"/Users/aaronkapor/repos/python/dj_book/main/books/urls.py",
+		"/Users/aaronkapor/repos/python/dj_book/main/add/views.py",
+		"/Users/aaronkapor/repos/python/dj_first/first/passgen/views.py",
+		"/Users/aaronkapor/repos/python/dj_book/main/books/settings.py",
+		"/Users/aaronkapor/repos/python/django/first/first/urls.py",
+		"/Users/aaronkapor/repos/python/django/first/passgen/views.py",
+		"/Users/aaronkapor/repos/_code/tutorials-local/[PY]/[PY] The Python Mega Course Build 10 Real World Applications/17 Object Oriented Programming/162 Exercise-files/backend.py",
+		"/Users/aaronkapor/repos/python/bookdesk/app/books.db",
+		"/Users/aaronkapor/repos/python/bookdesk/app/backend.py",
+		"/Users/aaronkapor/repos/python/bookdesk/app/frontend.py",
+		"/Users/aaronkapor/repos/_code/tutorials-local/[PY]/[PY] The Python Mega Course Build 10 Real World Applications/16 Application 5 Building a Desktop Database Application/147 app5-tkinter-sqlite/frontend.py",
+		"/Users/aaronkapor/repos/_code/tutorials-local/[PY]/[PY] The Python Mega Course Build 10 Real World Applications/16 Application 5 Building a Desktop Database Application/147 app5-tkinter-sqlite/backend.py",
+		"/Users/aaronkapor/.Trash/be.py"
+	],
+	"find":
+	{
+		"height": 45.0
+	},
+	"find_in_files":
+	{
+		"height": 190.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 66.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 229.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.test_runner":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "collect.sublime-project",
+	"replace":
+	{
+		"height": 82.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"test runner",
+				"Test Runner/TestRunner.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 399.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
