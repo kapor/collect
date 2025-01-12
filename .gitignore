@@ -10,8 +10,8 @@ __pycache__
 db.sqlite3
 /env
 *.env
-.sublime-project
-.sublime-workspace
+*.sublime-project
+*.sublime-workspace
 
 # C extensions
 *.so
