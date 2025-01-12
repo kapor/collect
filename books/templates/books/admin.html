@@ -1,0 +1,45 @@
+{% extends "base/index.html" %}
+{% block body_block %}
+
+
+<h1>Collection</h1>
+
+
+<div class="grid_container">
+
+{% if page_obj.object_list %}
+
+	{% for acc in page_obj.object_list %}
+	<div class="grid_info">
+		{% if acc.image %}
+		<div class="grid_info_top" style="background-image: url( /media/{{ acc.image }} );">
+			<!-- <img class="grid_blank" src="/media/{{ acc.image }}"> -->
+		</div>
+		<div class="grid_info_bottom">
+		</div>
+		{% else %}
+		<div class="grid_info_top" style="background-image: url( /media/covers/blank.jpg );">
+			<!-- <img class="grid_blank" src="/media/covers/blank.jpg"> -->
+		</div>
+		<div class="grid_info_bottom">
+		</div>
+		{% endif %}
+
+
+	</div>
+	{% endfor %}
+
+
+</div>
+
+
+
+
+
+{% else %}
+<p class="test_p">
+	NO ACCESS RECORDS FOUND
+</p>
+{% endif %}
+
+{% endblock %}

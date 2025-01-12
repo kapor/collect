@@ -1,6 +1,8 @@
 from django.contrib import admin
-from collection.models import BookList, BookList2
+from collection.models import BookList, BookAdmin
 # Register your models here.
 
 admin.site.register(BookList)
-admin.site.register(BookList2)
+admin.site.register(BookAdmin)
+
+

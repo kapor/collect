@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from .models import BookList, BookList2
+from .models import BookList, BookAdmin
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.core import validators
@@ -53,7 +53,8 @@ class book_entry(forms.ModelForm):
 
 
 
-class book_entry2(forms.ModelForm):
+
+class book_admin(forms.ModelForm):
     title = forms.CharField(label="Title", max_length=500, required=True, validators=[check_length])
     author = forms.CharField(label="Author", max_length=500, required=False, validators=[check_length])
     year = forms.IntegerField(label="Year", required=False)
@@ -74,8 +75,8 @@ class book_entry2(forms.ModelForm):
     botcat = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 
     class Meta():
-        model = BookList2
-        database = 'collect'
+        model = BookAdmin
+        database = 'collection_01'        
         fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
 
     def clean(self):

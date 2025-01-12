@@ -85,14 +85,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'postgres': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'collect',
-        'USER': 'aaronkapor',
-        'PASSWORD': 'jene4545',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'ak_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'ak.db',
+    },
+    # 'postgres': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'collect',
+    #     'USER': 'aaronkapor',
+    #     'PASSWORD': 'jene4545',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
 
 }
 
