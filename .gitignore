@@ -12,6 +12,7 @@ db.sqlite3
 *.env
 *.sublime-project
 *.sublime-workspace
+*.DS_Store
 
 # C extensions
 *.so
