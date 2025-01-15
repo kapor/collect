@@ -4,25 +4,39 @@ from django.contrib.auth.models import User
 from pathlib import Path
 import os
 
+
+class Tags(models.Model):
+    name = models.TextField(max_length=255)
+
+    class Meta:
+        verbose_name_plural = "Tags"
+
+    def __str__(self):
+        return self.name
+
+
+
+
 def get_upload_path(instance, filename):
     return 'covers/{0}/{1}'.format(instance.user.username, filename)
 
 class BookList(models.Model):
     user = models.ForeignKey(User, related_name='users', on_delete=models.CASCADE)
     # id = models.IntegerField(primary_key=True)
-    title = models.TextField(max_length=264, blank=True, null=True)
-    author = models.TextField(max_length=264, blank=True, null=True)
+    title = models.TextField(max_length=1000, blank=True, null=True)
+    author = models.CharField(max_length=1000, blank=True, null=True)
     year = models.IntegerField(blank=True, null=True)
-    type = models.TextField(max_length=264, blank=True, null=True)
-    publisher = models.TextField(max_length=264, blank=True, null=True)
-    artist = models.TextField(max_length=264, blank=True, null=True)
-    quality = models.TextField(max_length=264, blank=True, null=True)
-    price = models.FloatField(blank=True, null=True)
-    location = models.TextField(max_length=264, blank=True, null=True)
-    genre = models.TextField(max_length=264, blank=True, null=True)
+    type = models.CharField(max_length=500, blank=True, null=True)
+    publisher = models.CharField(max_length=500, blank=True, null=True)
+    artist = models.CharField(max_length=500, blank=True, null=True)
+    quality = models.CharField(max_length=500, blank=True, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=20, blank=True, null=True)
+    location = models.CharField(max_length=500, blank=True, null=True)
+    genre = models.CharField(max_length=500, blank=True, null=True)
+    tags = models.ManyToManyField(to='collection.Tags', related_name='book_tags')
     weight = models.FloatField(blank=True, null=True)
     pages = models.IntegerField(blank=True, null=True)
-    isbn = models.FloatField(blank=True, null=True)
+    isbn = models.CharField(max_length=500, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to=get_upload_path, default="covers/blank.jpg", blank=True)
@@ -41,19 +55,20 @@ class BookList(models.Model):
 class BookAdmin(models.Model):
     user = models.ForeignKey(User, related_name='admin', on_delete=models.CASCADE)
     # id = models.IntegerField(primary_key=True)
-    title = models.TextField(max_length=264, blank=True, null=True)
-    author = models.TextField(max_length=264, blank=True, null=True)
+    title = models.TextField(max_length=1000, blank=True, null=True)
+    author = models.CharField(max_length=1000, blank=True, null=True)
     year = models.IntegerField(blank=True, null=True)
-    type = models.TextField(max_length=264, blank=True, null=True)
-    publisher = models.TextField(max_length=264, blank=True, null=True)
-    artist = models.TextField(max_length=264, blank=True, null=True)
-    quality = models.TextField(max_length=264, blank=True, null=True)
-    price = models.FloatField(blank=True, null=True)
-    location = models.TextField(max_length=264, blank=True, null=True)
-    genre = models.TextField(max_length=264, blank=True, null=True)
+    type = models.CharField(max_length=500, blank=True, null=True)
+    publisher = models.CharField(max_length=500, blank=True, null=True)
+    artist = models.CharField(max_length=500, blank=True, null=True)
+    quality = models.CharField(max_length=500, blank=True, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=20, blank=True, null=True)
+    location = models.CharField(max_length=500, blank=True, null=True)
+    genre = models.CharField(max_length=500, blank=True, null=True)
+    tags = models.ManyToManyField(to='collection.Tags', related_name='book_tags_admin')
     weight = models.FloatField(blank=True, null=True)
     pages = models.IntegerField(blank=True, null=True)
-    isbn = models.FloatField(blank=True, null=True)
+    isbn = models.CharField(max_length=500, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to=get_upload_path, default="covers/blank.jpg", blank=True)
     notes = models.TextField(blank=True, null=True)

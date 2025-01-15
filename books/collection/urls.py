@@ -8,11 +8,13 @@ from collection import views
 app_name = 'collection'
 
 urlpatterns = [
-    path('books/', views.books, name='index'),
-    path('books/admin', views.books_admin, name='books_admin'),
+    # path('books/', views.books, name='index'),
+    # path('books/admin', views.books_admin, name='books_admin'),
     path('entry/', views.entry, name='entry'),
     path('entry/admin', views.entry_admin, name='entry_admin'),
 
-    path('books/<int:pk>/', views.BookDetailView.as_view(), name='detail'),
+    path('books/admin', views.bookview.BookListAdmin.as_view(), name='list'),
+    path('books/', views.bookview.BookListView.as_view(), name='list'),
+    path('books/<int:pk>/', views.bookview.BookDetailView.as_view(), name='detail'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

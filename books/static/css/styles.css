@@ -254,7 +254,12 @@ a {
 	display: none;
 }
 
-
+.taggy {
+    background-color: #EEEEEE;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+}
 
 
 /*                                  */

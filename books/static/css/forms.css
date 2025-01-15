@@ -143,6 +143,16 @@ input[type=file]::file-selector-button {
     overflow: hidden;
 }
 
+.crop_detail {
+    height: 400px;
+    margin-bottom: 100px;
+}
+
+.photo_detail, photo_blank_detail {
+    height: 400px;
+    margin-bottom: 100px;
+}
+
 .photo_avatar, .photo_blank_avatar {
     width: 20px;
 /*    margin: -10px 0 0 0;*/
