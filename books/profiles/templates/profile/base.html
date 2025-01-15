@@ -1,0 +1,24 @@
+{% extends "base/index.html" %}
+{% load static %}
+
+{% block nav_sub %}
+	<ul class="nav_sub">
+		<div class="navbar_left">
+			<li><a class="nav_link" href="{% url 'profiles:profile' %}">Profile</a></li>
+			<li><a class="nav_link" href="{% url 'profiles:list' %}">Bookmarks</a></li>
+		</div>
+	</ul>
+{% endblock %}
+
+{% block body_block %}
+	<div class="header_sub">
+	{% block header %}
+	{% endblock %}
+	</div>
+
+	{% block content %}
+
+	{% endblock %}
+
+{% endblock %}
+

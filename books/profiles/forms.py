@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from profiles.models import UserInfo
+from profiles.models import UserInfo, Bookmarks, Tags
 from django.forms import ModelForm 
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
@@ -31,3 +31,9 @@ class UserForm2(forms.ModelForm):
 
 
 
+class BookmarkForm(forms.ModelForm):
+    tags = forms.ModelMultipleChoiceField(queryset=Tags.objects.all(), widget=forms.SelectMultiple)
+
+    class Meta:
+        model = Bookmarks
+        fields = ['title', 'url', 'tags']

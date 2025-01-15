@@ -1,0 +1,46 @@
+{% extends "profile/base.html" %}
+{% load static %}
+
+{% block header %}
+	<h1>Bookmarks</h1>
+{% endblock %}
+
+{% block content %}
+
+<div>
+
+{% if bookmarks %}
+	<div class="test_p">
+		<table>
+		<thread>
+			<th class="col_header">ID</th>
+			<th class="col_header">Title</th>
+			<th class="col_header">URL</th>
+			<th class="col_header">Tags</th>
+		</thread>
+
+		{% for bm in bookmarks %}
+
+		<tr>
+			<td>{{ bm.id }}</td>
+			<td><a href="{{ bm.id }}">{{ bm.title }}</a></td>
+			<td><a href="{{ bm.url }}" target="_blank">{{ bm.title }} (Amazon)</a></td>
+			<td>
+			{% for tags in bm.tags.all %}
+			{{ tags }}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+			</td>
+		</tr>
+
+		{% endfor %}
+
+		</table>
+	</div>
+	{% else %}
+	<h1>Nothing added yet</h1>
+
+
+{% endif %}
+</div>
+
+{% endblock %}

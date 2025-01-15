@@ -1,0 +1,67 @@
+{% extends "base/index.html" %}
+{% block body_block %}
+
+
+
+{% if user.is_authenticated %}
+
+	<h1>{{ user | capfirst }}'s Stuff</h1>
+
+	{% if book_list %}
+	<div class="test_p">
+
+		<table>
+		<thread>
+			<th class="col_header">ID</th>
+			<th class="col_header">Title</th>
+			<th class="col_header">Author</th>
+			<th class="col_header">Year</th>
+			<th class="col_header">Genre</th>
+			<th class="col_header">Add By</th>
+			<th class="col_header">Cover</th>
+		</thread>
+
+		{% for acc in book_list %}
+
+		<tr>
+			<td>{{ acc.id }}</td>
+			<h1><a href="{{ acc.id }}">{{ acc.title }}</td>
+			<td>{{ acc.author }}</td>
+			<td>{{ acc.year }}</td>
+			<td>{{ acc.genre }}</td>
+			<td>{{ acc.user }}</td>
+			<td>
+				<div class=crop>
+					{% if acc.image %}
+					<img class="photo" src="/media/{{ acc.image }}">
+					{% else %}
+					<img class="photo_blank" src="/media/covers/blank.jpg">
+					{% endif %}
+				</div>
+			</td>
+			</tr>
+
+		{% endfor %}
+
+		</table>
+
+	</div>
+
+		{% include 'paginate.html' %} 
+
+		{% else %}
+		<h1>Nothing added yet</h1>
+
+	{% endif %}
+
+{% else %}
+<h1>Empty :(</h1>
+<br>
+<h1>
+<a href="{% url 'login' %}">Log in</a> 
+or <a href="{% url 'join' %}">Join</a>
+</h1>
+
+{% endif %}
+
+{% endblock %}

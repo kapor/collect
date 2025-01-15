@@ -6,9 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from collection.models import BookList, BookAdmin
 from collection import views, urls
 from django.urls import reverse
-from django.views.generic import View, TemplateView
-
-from . import forms
+from django.views.generic import View, TemplateView, ListView, DetailView
+from . import models, forms
 import os
 
 
@@ -26,35 +25,40 @@ class update(TemplateView):
 
 
 
-def index(request):
-    return render(request, 'books/index.html')
+
+class BookDetailView(DetailView):
+    model = models.BookList
+    context_object_name = 'book_detail'
+    template_name = 'books/book_detail.html'
+
+
 
 
 def books(request):
-    book_list = BookList.objects.order_by('-id')
-    book_table = Paginator(book_list, 100)
+    table = BookList.objects.order_by('-id')
+    paginator = Paginator(table, 100)
     page_number = request.GET.get('page')
     try:
-        page = book_table.get_page(page_number)
+        page = paginator.get_page(page_number)
     except PageNotAnInteger:
-        page = book_table.page(1)
+        page = paginator.page(1)
     except EmptyPage:
-        page = book_table.page(book_table.num_pages)
-    book_dict = {'book_table':book_list}
+        page = paginator.page(paginator.num_pages)
+    book_dict = {'book_table':table}
     return render(request, 'books/index.html', context={'page_obj':page})
 
 
 def books_admin(request):
-    book_list = BookAdmin.objects.order_by('-id')
-    book_table = Paginator(book_list, 200)
+    table = BookAdmin.objects.order_by('-id')
+    paginator = Paginator(table, 200)
     page_number = request.GET.get('page')
     try:
-        page = book_table.get_page(page_number)
+        page = paginator.get_page(page_number)
     except PageNotAnInteger:
-        page = book_table.page(1)
+        page = paginator.page(1)
     except EmptyPage:
-        page = book_table.page(book_table.num_pages)
-    book_dict = {'book_table':book_list}
+        page = paginator.page(paginator.num_pages)
+    book_dict = {'paginator':table}
     return render(request, 'books/admin.html', context={'page_obj':page})
 
 
@@ -89,8 +93,9 @@ def entry_admin(request):
     return render(request, 'entry/admin.html',{'form2':form2})
 
 
-# def update(request, id):
-#     form = forms.book_entry()
-#     page_obj = BookList.objects.get(id=id)
-#     template = loader.get_template('books/update.html')
-#     return HttpResponse(template.render(request,{'form':form}))
+
+
+
+
+
+

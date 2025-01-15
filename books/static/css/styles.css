@@ -30,6 +30,10 @@ h1 {
 	padding-bottom: 40px;
 }
 
+.header_sub {
+	padding-top: 48px;
+}
+
 .test_image img {
     width: 100%;
     display: block;
@@ -67,15 +71,16 @@ h1 {
 }
 
 th, td {
-	padding-right: 20px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
 }
 
-td {
+/*td {
 	padding-top: 8px;
-}
+}*/
 
 table tr td:nth-child(1) {
    	max-width: 40px;
@@ -135,10 +140,7 @@ table {
 }
 
 .body_block {
-	padding: 20px;
-	padding-top: 120px;
-/*	width: 100%;*/
-
+	padding: 120px 20px 120px 20px;
 }
 
 
@@ -178,7 +180,26 @@ table {
 }
 
 
+.nav_sub {
+	box-sizing: border-box;
+	position: fixed;
+    z-index: 1;
+	display: table;
+	width: 100%;
+	list-style: none;
+    background-color: whitesmoke;
+    font-family: courier new, monospace;
+    text-decoration: none;
+    text-underline-offset: 10px;
+    text-transform: uppercase;
+    width: 100%;
+    justify-content: flex-start;
+	padding: 12px 20px;
+	margin: 0;
+	margin-top: 66px;
+	border-top: 1px #999999 solid;
 
+}
 
 
 
@@ -200,7 +221,7 @@ a {
     text-decoration: none;
     text-underline: none;
     text-transform: uppercase;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
  	padding-top: 60px;
 	font-size: 14px;
 }

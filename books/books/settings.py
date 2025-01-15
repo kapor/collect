@@ -164,7 +164,7 @@ MEDIAFILES_DIR = [
     os.path.join(BASE_DIR, "media")
 ]
 
-LOGIN_URL = '/reg/user_login'
+LOGIN_URL = '/login'
 
 
 # Default primary key field type

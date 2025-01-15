@@ -46,11 +46,12 @@ label {
 
 
 input.btn {
-    height: auto;
+    height: 80px;
     background-color: blue;
     margin-bottom: 200px;
-    cursor:pointer;
+    cursor: pointer;
     color: white;
+    font-size: 24px;
 }
 
 .errorlist {
@@ -131,6 +132,7 @@ input[type=file]::file-selector-button {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background-color: black;
 }
 
 .crop_avatar {

@@ -25,6 +25,7 @@
 			<div class="navbar_right">
 				<li><a class="nav_link" href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
 				<li><a class="nav_link" href="{% url 'logout' %}">Logout</a></li>
+				<li><a class="nav_link" href="{% url 'profiles:profile' %}">{{ user | capfirst }}</a></li>
 				<li><td>
 					<div class=crop_avatar>
 						{% if user.userinfo.picture %}
@@ -36,7 +37,7 @@
 				</li></td>
 			</div>
 		</ul>
-			{% else %}
+		{% else %}
 		<ul class="nav_bar">
 			<div class="navbar_left">
 				<li><a class="nav_link" href="{% url 'home' %}">Home</a></li>
@@ -48,14 +49,18 @@
 				<li><a class="nav_link" href="{% url 'join' %}">Join</a></li>
 			</div>
 		</ul>
-			{% endif %}
+		{% endif %}
+
+			{% block nav_sub %}
+			<!-- ANYTHING OUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND -->
+			{% endblock %}
 
 		<div class="body_block">
 			{% block body_block %}
 			<!-- ANYTHING OUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND -->
-
 			{% endblock %}
 		</div>
+
 	</body>
  
 </html>
