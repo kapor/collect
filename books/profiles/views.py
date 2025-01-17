@@ -10,7 +10,7 @@ from profiles.models import UserInfo
 from profiles.forms import UserForm1, UserForm2, BookmarkForm
 from . import models, forms
 from django.contrib.auth.models import User
-from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 import os
 
 
@@ -31,23 +31,18 @@ class profile(View):
         model = models.Bookmarks
         context_object_name = 'bookmarks'
         template_name = 'profile/bm_view.html'
+        #Below filters items only created by the logged-in user
+        def get_queryset(self):
+            return super().get_queryset().filter(user=self.request.user)
 
 
     class BookMarksDetail(DetailView):
         model = models.Bookmarks
         context_object_name = 'bookmarks_detail'
         template_name = 'profile/bm_detail.html'
-
-
-# def bookmarktags(request):
-#     if request.method == 'POST':
-#         form = BookmarkForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('success_page')
-#     else:
-#         form = BookmarkForm()
-#     return render(request, 'profile/bookmarks.html', {'form': form})
+        #Below filters items only created by the logged-in user
+        def get_queryset(self):
+            return super().get_queryset().filter(user=self.request.user)
 
 
 class index(View):
@@ -188,6 +183,16 @@ class reg():
 
 
 
+
+# def bookmarktags(request):
+#     if request.method == 'POST':
+#         form = BookmarkForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('success_page')
+#     else:
+#         form = BookmarkForm()
+#     return render(request, 'profile/bookmarks.html', {'form': form})
 
 
 

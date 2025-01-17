@@ -27,7 +27,7 @@
 			<td><a href="{{ bm.url }}" target="_blank">{{ bm.title }} (Amazon)</a></td>
 			<td>
 			{% for tags in bm.tags.all %}
-			<tag class="taggy">{{ tags }}</tag>{% if not forloop.last %},{% endif %}
+			<tag class="taggy">{{ tags }}</tag><!-- {% if not forloop.last %},{% endif %} -->
 			{% endfor %}
 			</td>
 		</tr>

@@ -12,11 +12,11 @@
 
 		<table>
 		<thread>
-			<th class="col_header">ID</th>
+			<th class="col_header">Edit</th>
+			<th class="col_header">Year</th>
 			<th class="col_header">Title</th>
 			<th class="col_header">Author</th>
-			<th class="col_header">Year</th>
-			<th class="col_header">Genre</th>
+			<th class="col_header">Tags</th>
 			<th class="col_header">Add By</th>
 			<th class="col_header">Cover</th>
 		</thread>
@@ -24,11 +24,19 @@
 		{% for acc in booklist %}
 
 		<tr>
-			<td>{{ acc.id }}</td>
+			<td><a href="{% url 'collection:update' pk=acc.id %}">EDIT</a></td>
+			<td>{{ acc.year }}</td>
 			<td><a href="{{ acc.id }}">{{ acc.title }}</a></td>
 			<td>{{ acc.author }}</td>
-			<td>{{ acc.year }}</td>
-			<td>{{ acc.genre }}</td>
+
+		
+			<td>
+			{% for tags in acc.tags.all %}
+			<tag class="taggy">{{ tags }}</tag><!-- {% if not forloop.last %},{% endif %} -->
+			{% endfor %}
+			</td>
+
+
 			<td>{{ acc.user }}</td>
 			<td>
 				<div class=crop>
@@ -47,11 +55,16 @@
 
 	</div>
 
+<!-- 		<div class="add_another">
+		</div>
+ -->
 		{% include 'paginate.html' %} 
 
 		{% else %}
 		<h1>Nothing added yet</h1>
 
+		<div class="empty">
+		</div>
 	{% endif %}
 
 {% else %}
@@ -62,6 +75,22 @@
 or <a href="{% url 'join' %}">Join</a>
 </h1>
 
+<div class="empty">
+</div>
+
 {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

@@ -17,7 +17,7 @@ def get_upload_path(instance, filename):
 class UserInfo(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	website = models.URLField(blank=True)
-	picture = models.ImageField(upload_to=get_upload_path, default="blank.jpg", blank=True)
+	picture = models.ImageField(upload_to=get_upload_path, default="profile_pics/blank.jpg", blank=True)
 
 	class Meta:
 		# managed = False

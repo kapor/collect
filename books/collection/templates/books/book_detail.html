@@ -24,7 +24,12 @@
 	<h1>{{ bookdetail.quality }}</h1>
 	<h1>{{ bookdetail.price }}</h1>
 	<h1>{{ bookdetail.location }}</h1>
-	<h1>{{ bookdetail.genre }}</h1>
+<!-- 	<h1>{{ bookdetail.genre }}</h1> -->
+	<h1>
+	{% for tags in bookdetail.tags.all %}
+	{{ tags }}{% if not forloop.last %},{% endif %}
+	{% endfor %}
+	</h1>
 	<h1>{{ bookdetail.weight }}</h1>
 	<h1>{{ bookdetail.pages }}</h1>
 	<h1>{{ bookdetail.isbn | cut:".0" }}</h1>

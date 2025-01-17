@@ -5,8 +5,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login, logout
 from collection.models import BookList, BookAdmin
 from collection import views, urls
-from django.urls import reverse
-from django.views.generic import View, TemplateView, ListView, DetailView, FormView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import View, TemplateView, ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
 from . import models, forms
 import os
 
@@ -14,21 +14,33 @@ import os
 
 # Create your views here.
 
-class update(TemplateView):
+class update(UpdateView):
     template_name = 'books/update.html'
+    model = models.BookList
+    fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['injectme'] = 'Injection'
+        context['injectme'] = 'Update'
         return context
+
+
+class delete(DeleteView):
+    model = models.BookList
+    success_url = reverse_lazy("collection:list")
+
+
+# class confirm(TemplateView):
+#     model = models.BookList
+#     template_name: 'confirmation.html'
+#     context_object_name = 'confirm'
+
 
 
 # class BookDetailView(DetailView):
 #     model = models.BookList
 #     context_object_name = 'book_detail'
 #     template_name = 'books/book_detail.html'
-
-
 
 
 
@@ -42,6 +54,9 @@ class bookview(View):
         template_name = 'books/book_list.html'
         paginate_by = 20
         queryset = BookList.objects.order_by('-id')
+        #Below filters items only created by the logged-in user
+        def get_queryset(self):
+            return super().get_queryset().filter(user=self.request.user)
 
     class BookDetailView(DetailView):
         model = models.BookList
@@ -54,54 +69,10 @@ class bookview(View):
         template_name = 'books/admin.html'
         paginate_by = 100
         queryset = BookAdmin.objects.order_by('-id')
-        # new method added ⬇️
-        # def get_template_names(self, *args, **kwargs):
-        #     if self.request.htmx:
-        #         return "books/admin.html"
-        #     else:
-        #         return self.template_name
+        def get_queryset(self):
+            return super().get_queryset().filter(user=self.request.user)
 
 
-
-
-
-
-
-
-
-# def books(request):
-#     table = BookList.objects.order_by('-id')
-#     paginator = Paginator(table, 100)
-#     page_number = request.GET.get('page')
-#     try:
-#         page = paginator.get_page(page_number)
-#     except PageNotAnInteger:
-#         page = paginator.page(1)
-#     except EmptyPage:
-#         page = paginator.page(paginator.num_pages)
-#     book_dict = {'book_table':table}
-#     return render(request, 'books/index.html', context={'page_obj':page})
-
-
-# def books_admin(request):
-#     table = BookAdmin.objects.order_by('-id')
-#     paginator = Paginator(table, 200)
-#     page_number = request.GET.get('page')
-#     try:
-#         page = paginator.get_page(page_number)
-#     except PageNotAnInteger:
-#         page = paginator.page(1)
-#     except EmptyPage:
-#         page = paginator.page(paginator.num_pages)
-#     book_dict = {'paginator':table}
-#     return render(request, 'books/admin.html', context={'page_obj':page})
-
-
-
-# class entry_form(FormView):
-#     template_name = "entry/user.html"
-#     form_class = book_entry
-#     success_url = "success_page/"
 
 
 def entry(request):
@@ -113,10 +84,20 @@ def entry(request):
             profile.user = request.user
             profile.save()
             photo = form.save()
+            form.save_m2m()
             return redirect('/books/')
     else:
         form = forms.book_entry()
-    return render(request, 'entry/user.html',{'form':form})
+    return render(request, 'entry/create.html',{'form':form})
+
+# CLASS BASED VIEW - SAME AS ABOVE
+# class create_entry(CreateView):
+#     template_name = 'entry/create.html'
+#     model = models.BookList
+#     fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+
+
+
 
 
 def entry_admin(request):
@@ -133,6 +114,18 @@ def entry_admin(request):
     else:
         form = forms.book_admin()
     return render(request, 'entry/admin.html',{'form2':form2})
+
+# CLASS BASED VIEW - SAME AS ABOVE
+# class create_entry_admin(CreateView):
+#     template_name = 'entry/create.html'
+#     model = models.BookAdmin
+#     fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+
+
+
+
+
+
 
 
 

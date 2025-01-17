@@ -1,6 +1,7 @@
 from django import forms
 from django.db import models
-from .models import BookList, BookAdmin, Tags
+from .models import BookList, BookAdmin
+from taggit.forms import TagField
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.core import validators
@@ -34,7 +35,7 @@ class book_entry(forms.ModelForm):
     price = forms.DecimalField(label="Price", required=False)
     location = forms.CharField(label="Location", max_length=500, required=False)
     genre = forms.CharField(label="Genre", max_length=500, required=False)
-    # tags = forms.ModelMultipleChoiceField(queryset=Tags.objects.all(), widget=forms.SelectMultiple, label="Tags")
+    # tags = forms.CharField(label="Tags")
     weight = forms.FloatField(label="Weight", required=False)
     pages = forms.IntegerField(label="Pages", required=False)
     isbn = forms.CharField(label="ISBN", required=False)
@@ -47,7 +48,7 @@ class book_entry(forms.ModelForm):
     class Meta():
         model = BookList
         database = 'default'        
-        fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+        fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
 
     def clean(self):
         all_clean = super().clean()
@@ -66,7 +67,7 @@ class book_admin(forms.ModelForm):
     price = forms.DecimalField(label="Price", required=False)
     location = forms.CharField(label="Location", max_length=500, required=False)
     genre = forms.CharField(label="Genre", max_length=500, required=False)
-    # tags = forms.ModelMultipleChoiceField(queryset=Tags.objects.all(), widget=forms.SelectMultiple, label="Tags")
+    # tags = forms.CharField(label="Tags", max_length=500, required=False)
     weight = forms.FloatField(label="Weight", required=False)
     pages = forms.IntegerField(label="Pages", required=False)
     isbn = forms.CharField(label="ISBN", required=False)
