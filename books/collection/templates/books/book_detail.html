@@ -1,0 +1,51 @@
+{% extends "base/index.html" %}
+{% block body_block %}
+
+
+
+	{% block content %}
+
+	<div>
+
+
+	<div class=crop_detail>
+		{% if bookdetail.image %}
+		<img class="photo_detail" src="/media/{{ bookdetail.image }}">
+		{% else %}
+		<img class="photo_blank" src="/media/covers/blank.jpg">
+		{% endif %}
+	</div>
+
+	<h1>{{ bookdetail.title }}</h1>
+	<h1>{{ bookdetail.author }}</h1>
+	<h1>{{ bookdetail.year }}</h1>
+	<h1>{{ bookdetail.publisher }}</h1>
+	<h1>{{ bookdetail.artist }}</h1>
+	<h1>{{ bookdetail.quality }}</h1>
+	<h1>{{ bookdetail.price }}</h1>
+	<h1>{{ bookdetail.location }}</h1>
+<!-- 	<h1>{{ bookdetail.genre }}</h1> -->
+	<h1>
+	{% for tags in bookdetail.tags.all %}
+	{{ tags }}{% if not forloop.last %},{% endif %}
+	{% endfor %}
+	</h1>
+	<h1>{{ bookdetail.weight }}</h1>
+	<h1>{{ bookdetail.pages }}</h1>
+	<h1>{{ bookdetail.isbn | cut:".0" }}</h1>
+	<h1>{{ bookdetail.description }}</h1>
+	<h1>{{ bookdetail.notes }}</h1>
+
+	<div class=crop_detail>
+		{% if bookdetail.image %}
+		<img class="photo_detail" src="/media/{{ bookdetail.image }}">
+		{% else %}
+		<img class="photo_blank_detail" src="/media/covers/blank.jpg">
+		{% endif %}
+	</div>
+
+
+	</div>
+
+	{% endblock %}
+{% endblock %}

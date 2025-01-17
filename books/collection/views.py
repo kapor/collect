@@ -5,57 +5,73 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login, logout
 from collection.models import BookList, BookAdmin
 from collection import views, urls
-from django.urls import reverse
-from django.views.generic import View, TemplateView
-
-from . import forms
+from django.urls import reverse, reverse_lazy
+from django.views.generic import View, TemplateView, ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
+from . import models, forms
 import os
 
 
 
 # Create your views here.
 
-class update(TemplateView):
+class update(UpdateView):
     template_name = 'books/update.html'
+    model = models.BookList
+    fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['injectme'] = 'Injection'
+        context['injectme'] = 'Update'
         return context
 
 
+class delete(DeleteView):
+    model = models.BookList
+    success_url = reverse_lazy("collection:list")
 
 
-def index(request):
-    return render(request, 'books/index.html')
+# class confirm(TemplateView):
+#     model = models.BookList
+#     template_name: 'confirmation.html'
+#     context_object_name = 'confirm'
 
 
-def books(request):
-    book_list = BookList.objects.order_by('-id')
-    book_table = Paginator(book_list, 100)
-    page_number = request.GET.get('page')
-    try:
-        page = book_table.get_page(page_number)
-    except PageNotAnInteger:
-        page = book_table.page(1)
-    except EmptyPage:
-        page = book_table.page(book_table.num_pages)
-    book_dict = {'book_table':book_list}
-    return render(request, 'books/index.html', context={'page_obj':page})
+
+# class BookDetailView(DetailView):
+#     model = models.BookList
+#     context_object_name = 'book_detail'
+#     template_name = 'books/book_detail.html'
 
 
-def books_admin(request):
-    book_list = BookAdmin.objects.order_by('-id')
-    book_table = Paginator(book_list, 200)
-    page_number = request.GET.get('page')
-    try:
-        page = book_table.get_page(page_number)
-    except PageNotAnInteger:
-        page = book_table.page(1)
-    except EmptyPage:
-        page = book_table.page(book_table.num_pages)
-    book_dict = {'book_table':book_list}
-    return render(request, 'books/admin.html', context={'page_obj':page})
+
+
+
+class bookview(View):
+
+    class BookListView(ListView):
+        model = models.BookList
+        context_object_name = 'booklist'
+        template_name = 'books/book_list.html'
+        paginate_by = 20
+        queryset = BookList.objects.order_by('-id')
+        #Below filters items only created by the logged-in user
+        def get_queryset(self):
+            return super().get_queryset().filter(user=self.request.user)
+
+    class BookDetailView(DetailView):
+        model = models.BookList
+        context_object_name = 'bookdetail'
+        template_name = 'books/book_detail.html'
+
+    class BookListAdmin(ListView):
+        model = models.BookAdmin
+        context_object_name = 'bookadmin'
+        template_name = 'books/admin.html'
+        paginate_by = 100
+        queryset = BookAdmin.objects.order_by('-id')
+        def get_queryset(self):
+            return super().get_queryset().filter(user=self.request.user)
+
 
 
 
@@ -68,13 +84,24 @@ def entry(request):
             profile.user = request.user
             profile.save()
             photo = form.save()
-            return books(request)
+            form.save_m2m()
+            return redirect('/books/')
     else:
         form = forms.book_entry()
-    return render(request, 'entry/user.html',{'form':form})
+    return render(request, 'entry/create.html',{'form':form})
+
+# CLASS BASED VIEW - SAME AS ABOVE
+# class create_entry(CreateView):
+#     template_name = 'entry/create.html'
+#     model = models.BookList
+#     fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+
+
+
 
 
 def entry_admin(request):
+
     form2 = forms.book_admin()
     if request.method == 'POST':
         form2 = forms.book_admin(request.POST, request.FILES)  
@@ -83,14 +110,27 @@ def entry_admin(request):
             profile.user = request.user
             profile.save()
             photo = form2.save()
-            return books(request)
+            return redirect('/books/admin')
     else:
         form = forms.book_admin()
     return render(request, 'entry/admin.html',{'form2':form2})
 
+# CLASS BASED VIEW - SAME AS ABOVE
+# class create_entry_admin(CreateView):
+#     template_name = 'entry/create.html'
+#     model = models.BookAdmin
+#     fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
 
-# def update(request, id):
-#     form = forms.book_entry()
-#     page_obj = BookList.objects.get(id=id)
-#     template = loader.get_template('books/update.html')
-#     return HttpResponse(template.render(request,{'form':form}))
+
+
+
+
+
+
+
+
+
+
+
+
+

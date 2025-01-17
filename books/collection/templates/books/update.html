@@ -2,13 +2,14 @@
 {% block body_block %}
 
 {% if user.is_authenticated %}
-<h1>Update</h1>
-<h1>Injected Content: {{ injectme }}</h1>
+<h1>Action: {{ injectme }}</h1>
 <div class="forms">
 <form method="POST" enctype="multipart/form-data">
 	{{form}}
 	{% csrf_token %}
 	<input type="submit" class="btn" value="Submit">
+	<div class="cancel"><a href="{% url 'collection:list' %}">Cancel</a></div>
+
 </form>
 </div>
 {% else %}

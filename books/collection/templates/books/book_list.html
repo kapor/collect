@@ -1,0 +1,96 @@
+{% extends "base/index.html" %}
+{% block body_block %}
+
+
+
+{% if user.is_authenticated %}
+
+	<h1>{{ user | capfirst }}'s Stuff</h1>
+
+	{% if booklist %}
+	<div class="test_p">
+
+		<table>
+		<thread>
+			<th class="col_header">Edit</th>
+			<th class="col_header">Year</th>
+			<th class="col_header">Title</th>
+			<th class="col_header">Author</th>
+			<th class="col_header">Tags</th>
+			<th class="col_header">Add By</th>
+			<th class="col_header">Cover</th>
+		</thread>
+
+		{% for acc in booklist %}
+
+		<tr>
+			<td><a href="{% url 'collection:update' pk=acc.id %}">EDIT</a></td>
+			<td>{{ acc.year }}</td>
+			<td><a href="{{ acc.id }}">{{ acc.title }}</a></td>
+			<td>{{ acc.author }}</td>
+
+		
+			<td>
+			{% for tags in acc.tags.all %}
+			<tag class="taggy">{{ tags }}</tag><!-- {% if not forloop.last %},{% endif %} -->
+			{% endfor %}
+			</td>
+
+
+			<td>{{ acc.user }}</td>
+			<td>
+				<div class=crop>
+					{% if acc.image %}
+					<img class="photo" src="/media/{{ acc.image }}">
+					{% else %}
+					<img class="photo_blank" src="/media/covers/blank.jpg">
+					{% endif %}
+				</div>
+			</td>
+			</tr>
+
+		{% endfor %}
+
+		</table>
+
+	</div>
+
+<!-- 		<div class="add_another">
+		</div>
+ -->
+		{% include 'paginate.html' %} 
+
+		{% else %}
+		<h1>Nothing added yet</h1>
+
+		<div class="empty">
+		</div>
+	{% endif %}
+
+{% else %}
+<h1>Empty :(</h1>
+<br>
+<h1>
+<a href="{% url 'login' %}">Log in</a> 
+or <a href="{% url 'join' %}">Join</a>
+</h1>
+
+<div class="empty">
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

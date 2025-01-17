@@ -5,4 +5,3 @@ from collection.models import BookList, BookAdmin
 admin.site.register(BookList)
 admin.site.register(BookAdmin)
 
-

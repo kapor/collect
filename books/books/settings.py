@@ -19,7 +19,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
-
+TAGGIT_TAGS_FROM_STRING = 'collection.utils.comma_splitter'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'collection',
     'profiles',
+    "django_htmx",
+    "taggit",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = 'books.urls'
@@ -85,10 +88,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'ak_db': {
+    'admin': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'ak.db',
+        'NAME': BASE_DIR / 'admin.db',
     },
+
     # 'postgres': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #     'NAME': 'collect',
@@ -164,7 +168,7 @@ MEDIAFILES_DIR = [
     os.path.join(BASE_DIR, "media")
 ]
 
-LOGIN_URL = '/reg/user_login'
+LOGIN_URL = '/login'
 
 
 # Default primary key field type

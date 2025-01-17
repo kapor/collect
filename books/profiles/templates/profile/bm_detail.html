@@ -1,0 +1,27 @@
+{% extends "profile/base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div>
+
+
+
+
+
+	<h1><a href="{{ bm.id }}">{{ bookmarks_detail.title }}</a></h1>
+
+	{% for tags in bookmarks_detail.tags.all %}
+	<h1>{{ tags }}</h1>
+	{% endfor %}
+
+	<h1><a href="{{ bm.url }}" target="_blank">Link</a></h1>
+
+
+
+
+</div>
+
+{% endblock %}

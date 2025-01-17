@@ -27,23 +27,25 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('collection.urls')),
+    path('', include('profiles.urls')),
 
-    # path('', views.index, name='index'),
 
     #class based view
-    path('', views.index.as_view()), 
-    path('home/', views.home, name='home'),
+    # path('', views.index.as_view()), 
+    path('home/', views.index.home, name='home'),
 
-    path('', include('profiles.urls')),
-    path('success/', views.home, name='success_page'),
+    
+    path('home/', views.index.home, name='success_page'),
 
-    path('profiles/', views.people, name='people'),
-    path('join/', views.join, name='join'),
-    path('login/', views.user_login, name='login'),
-    path('logout/', views.user_logout, name='logout'),
-    path('loggedin/', views.loggedin, name='loggedin'),
+    path('people/', views.people, name='people'),
 
-    path('', include('collection.urls')),
+    path('join/', views.reg.reg_join, name='join'),
+    path('login/', views.reg.reg_login, name='login'),
+    path('logout/', views.reg.reg_logout, name='logout'),
+    path('loggedin/', views.reg.reg_loggedin, name='loggedin'),
+
+
 
 
 
