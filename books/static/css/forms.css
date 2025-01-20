@@ -73,8 +73,21 @@ input.btn {
     text-align: center;
     border-radius: 4px;
     isplay: flex;
+    margin-top: 40px;
 }
 
+input.btn-danger {
+    height: 80px;
+    background-color: red;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 4px;
+    isplay: flex;
+    display:inline-block;
+    width:100%;
+}
 
 .cancel {
     height: 80px;
@@ -96,25 +109,9 @@ input.btn {
 .cancel a {
     display:inline-block;
     width:100%;
-    height:100%;
 }
 
-.delete {
-    height: 80px;
-    width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    background-color: red;
-    cursor: pointer;
-    color: white;
-    font-size: 24px;
-    text-align: center;
-    border-radius: 4px;
-    display: inline-block;
-    font-family: courier new, monospace;
-    line-height: 80px;
-    border: none;
-}
+
 
 .delete a {
     color: white;
@@ -257,6 +254,27 @@ input[type=file]::file-selector-button {
     border-radius: 2px;
     font-size: 12px;
 }
+
+
+
+
+.form-check-input {
+    
+}
+
+
+.image_cover {
+    width: 100px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
 
 
 

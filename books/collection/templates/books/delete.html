@@ -1,0 +1,25 @@
+{% extends "base/index.html" %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+
+<!-- {% if book_delete.image %}
+<img src="{{ book_delete.image.url }}" alt="cover" class="image_cover">
+{% else %}
+{% endif %} -->
+
+<h1>Action: Delete</h1>
+<h1>{{ book_delete }}</h1>
+<div class="forms">
+<form method="POST" enctype="multipart/form-data">
+	{{form}}
+
+	{% csrf_token %}
+	<input type="submit" class="btn btn-danger" value="Delete">
+	<div class="cancel"><a href="{% url 'collection:list' %}">Cancel</a>
+</form>
+
+{% else %}
+<h1>No Access</h1>
+{% endif %}
+{% endblock %}

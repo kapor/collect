@@ -14,33 +14,28 @@ import os
 
 # Create your views here.
 
-class update(UpdateView):
-    template_name = 'books/update.html'
-    model = models.BookList
-    fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+class edit(View):
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['injectme'] = 'Update'
-        return context
-
-
-class delete(DeleteView):
-    model = models.BookList
-    success_url = reverse_lazy("collection:list")
+    class update(UpdateView):
+        template_name = 'books/update.html'
+        model = models.BookList
+        form_class = forms.book_update
+        context_object_name = 'book_update'
+        success_url = reverse_lazy("collection:list")
 
 
-# class confirm(TemplateView):
-#     model = models.BookList
-#     template_name: 'confirmation.html'
-#     context_object_name = 'confirm'
+    class delete(DeleteView):
+        model = models.BookList
+        template_name = 'books/delete.html'
+        context_object_name = 'book_delete'
+        success_url = reverse_lazy("collection:list")
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['injectme'] = 'Update'
+    #     return context
 
 
-
-# class BookDetailView(DetailView):
-#     model = models.BookList
-#     context_object_name = 'book_detail'
-#     template_name = 'books/book_detail.html'
 
 
 

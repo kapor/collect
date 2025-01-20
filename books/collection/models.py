@@ -30,7 +30,7 @@ class BookList(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=20, blank=True, null=True)
     location = models.CharField(max_length=500, blank=True, null=True)
     genre = models.CharField(max_length=500, blank=True, null=True)
-    tags = TaggableManager(blank=True)
+    tags = TaggableManager(blank=False)
     weight = models.FloatField(blank=True, null=True)
     pages = models.IntegerField(blank=True, null=True)
     isbn = models.CharField(max_length=500, blank=True, null=True)
@@ -49,6 +49,9 @@ class BookList(models.Model):
 
     def get_absolute_url(self):
         return reverse("collection:detail", kwargs={'pk':self.pk})
+
+
+
 
 
 

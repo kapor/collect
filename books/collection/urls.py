@@ -17,10 +17,8 @@ urlpatterns = [
     path('books/', views.bookview.BookListView.as_view(), name='list'),
     path('books/<int:pk>/', views.bookview.BookDetailView.as_view(), name='detail'),
 
-    # path('create/', views.create_entry.as_view(), name='create'),
 
-    path('update/<int:pk>/', views.update.as_view(), name='update'),
-    path('delete/<int:pk>/', views.delete.as_view(), name='delete'),
-    # path('confirm/<int:pk>/', views.confirm.as_view(), name='confirm'),
+    path('update/<int:pk>/', views.edit.update.as_view(), name='update'),
+    path('update/<int:pk>/delete', views.edit.delete.as_view(), name='book_delete'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,7 +12,7 @@
 
 		<table>
 		<thread>
-			<th class="col_header">Edit</th>
+			<th class="col_header">Actions</th>
 			<th class="col_header">Year</th>
 			<th class="col_header">Title</th>
 			<th class="col_header">Author</th>
@@ -24,7 +24,8 @@
 		{% for acc in booklist %}
 
 		<tr>
-			<td><a href="{% url 'collection:update' pk=acc.id %}">EDIT</a></td>
+			<td><a href="{% url 'collection:update' pk=acc.id %}">EDIT</a>
+			<a href="{% url 'collection:book_delete' pk=acc.id %}">DEL</a></td>
 			<td>{{ acc.year }}</td>
 			<td><a href="{{ acc.id }}">{{ acc.title }}</a></td>
 			<td>{{ acc.author }}</td>

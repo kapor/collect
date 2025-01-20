@@ -8,9 +8,9 @@
 	{{form}}
 	{% csrf_token %}
 	<input type="submit" class="btn" value="Submit">
-	<td><a href="{% url 'collection:update' pk=acc.id %}">Cancel</a></td>
-	{% csrf_token %}
-	<input type="submit" class="btn_danger" value="Delete">
+	<div class="cancel"><a href="{% url 'collection:list' %}">Cancel</a></div>
+	<div class="cancel"><a href="{% url 'collection:delete' %}">Delete</a></div>
+<!-- 	<input type="submit" class="btn" value="Delete"> -->
 </form>
 </div>
 {% else %}
