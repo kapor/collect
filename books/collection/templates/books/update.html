@@ -1,17 +1,40 @@
 {% extends "base/index.html" %}
+{% load widget_tweaks %}
 {% block body_block %}
 
 {% if user.is_authenticated %}
-<h1>Action: {{ injectme }}</h1>
+<h1>Action: Edit</h1>
 <div class="forms">
 <form method="POST" enctype="multipart/form-data">
-	{{form}}
-	{% csrf_token %}
-	<input type="submit" class="btn" value="Submit">
-	<div class="cancel"><a href="{% url 'collection:list' %}">Cancel</a></div>
 
-</form>
+
+
+<div class="form-group">
+
+{{ form }}
+
+<!-- <label for="{{form.image.id_for_label}}" class="image_label">{{form.image.label}}</label> -->
+
+
+
+<div class="image_cover_container">
+	{% if form.instance.image %}
+		<img src="{{ form.instance.image.url }}" alt="cover" class="image_cover">
+	{% else %}
+		Currently No Image
+	{% endif %}
 </div>
+
+{% csrf_token %}
+<input class="file_input" type="file" name="image" id="{{ widget.FileInput }}">
+
+
+{% csrf_token %}
+<input type="submit" class="btn" value="Submit">
+<div class="cancel"><a href="{% url 'collection:list' %}">Cancel</a></div>
+</form>
+
+
 {% else %}
 <h1>No Access</h1>
 {% endif %}

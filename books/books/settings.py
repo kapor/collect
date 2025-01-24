@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'profiles',
     "django_htmx",
     "taggit",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [

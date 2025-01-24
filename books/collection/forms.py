@@ -1,5 +1,6 @@
 from django import forms
 from django.db import models
+from django.forms import ModelForm, FileInput
 from .models import BookList, BookAdmin
 from taggit.forms import TagField
 from django.core.exceptions import ValidationError
@@ -8,7 +9,15 @@ from django.core import validators
 
 
 
+
 # to add a validator function, do it outside of the class
+
+
+
+
+class CustomClearableFileInput(forms.ClearableFileInput):
+    template_name = 'books/custom_clearable_file_input.html'
+
 
 def check_length(value):
     if len(value) <= 1:
@@ -45,6 +54,77 @@ class book_entry(forms.ModelForm):
     # bot catcher
     botcat = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 
+
+    class Meta():
+        model = BookList
+        database = 'default'        
+        fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+
+
+    def clean(self):
+        all_clean = super().clean()
+
+
+
+
+class book_update(forms.ModelForm):
+    title = forms.CharField(label="Title", max_length=500, required=True, validators=[check_length])
+    author = forms.CharField(label="Author", max_length=500, required=False, validators=[check_length])
+    year = forms.IntegerField(label="Year", required=False)
+    type = forms.CharField(label="Type", max_length=500, required=False)
+    publisher = forms.CharField(label="Publisher", max_length=500, required=False)
+    artist = forms.CharField(label="Artist", max_length=500, required=False)
+    quality = forms.CharField(label="Quality", max_length=500, required=False)
+    price = forms.DecimalField(label="Price", required=False)
+    location = forms.CharField(label="Location", max_length=500, required=False)
+    genre = forms.CharField(label="Genre", max_length=500, required=False)
+    # tags = forms.CharField(label="Tags")
+    weight = forms.FloatField(label="Weight", required=False)
+    pages = forms.IntegerField(label="Pages", required=False)
+    isbn = forms.CharField(label="ISBN", required=False)
+    description = forms.CharField(widget=forms.Textarea, required=False)
+    notes = forms.CharField(widget=forms.Textarea, required=False)
+    image = forms.ImageField(label="Image", required=False, widget=CustomClearableFileInput())
+    botcat = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+    update = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
+    class Meta():
+        model = BookList
+        database = 'default'        
+        fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+        widgets = {
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file' 'imageclear'})
+            }
+
+
+    def clean(self):
+        all_clean = super().clean()
+
+
+
+
+class book_delete(forms.ModelForm):
+    title = forms.CharField(label="Title", max_length=500, required=True, validators=[check_length])
+    author = forms.CharField(label="Author", max_length=500, required=False, validators=[check_length])
+    year = forms.IntegerField(label="Year", required=False)
+    type = forms.CharField(label="Type", max_length=500, required=False)
+    publisher = forms.CharField(label="Publisher", max_length=500, required=False)
+    artist = forms.CharField(label="Artist", max_length=500, required=False)
+    quality = forms.CharField(label="Quality", max_length=500, required=False)
+    price = forms.DecimalField(label="Price", required=False)
+    location = forms.CharField(label="Location", max_length=500, required=False)
+    genre = forms.CharField(label="Genre", max_length=500, required=False)
+    # tags = forms.CharField(label="Tags")
+    weight = forms.FloatField(label="Weight", required=False)
+    pages = forms.IntegerField(label="Pages", required=False)
+    isbn = forms.CharField(label="ISBN", required=False)
+    description = forms.CharField(widget=forms.Textarea, required=False)
+    notes = forms.CharField(widget=forms.Textarea, required=False)
+    image = forms.ImageField(label="Image", required=False)
+    # bot catcher
+    botcat = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+    delete = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
     class Meta():
         model = BookList
         database = 'default'        
@@ -52,6 +132,9 @@ class book_entry(forms.ModelForm):
 
     def clean(self):
         all_clean = super().clean()
+
+
+
 
 
 

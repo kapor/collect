@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login, logout
 from collection.models import BookList, BookAdmin
@@ -14,33 +15,27 @@ import os
 
 # Create your views here.
 
-class update(UpdateView):
-    template_name = 'books/update.html'
-    model = models.BookList
-    fields = ('title', 'author' , 'year', 'type', 'publisher', 'artist', 'quality', 'price', 'location', 'genre', 'tags', 'weight', 'pages', 'isbn', 'description', 'notes', 'image')
+class edit(View):
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['injectme'] = 'Update'
-        return context
-
-
-class delete(DeleteView):
-    model = models.BookList
-    success_url = reverse_lazy("collection:list")
+    class update(UpdateView):
+        template_name = 'books/update.html'
+        model = models.BookList
+        form_class = forms.book_update
+        context_object_name = 'book_update'
+        success_url = reverse_lazy("collection:list")
 
 
-# class confirm(TemplateView):
-#     model = models.BookList
-#     template_name: 'confirmation.html'
-#     context_object_name = 'confirm'
+    class delete(DeleteView):
+        model = models.BookList
+        template_name = 'books/delete.html'
+        context_object_name = 'book_delete'
+        success_url = reverse_lazy("collection:list")
 
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['injectme'] = 'Update'
+    #     return context
 
-
-# class BookDetailView(DetailView):
-#     model = models.BookList
-#     context_object_name = 'book_detail'
-#     template_name = 'books/book_detail.html'
 
 
 
@@ -57,11 +52,12 @@ class bookview(View):
         #Below filters items only created by the logged-in user
         def get_queryset(self):
             return super().get_queryset().filter(user=self.request.user)
-
+    
     class BookDetailView(DetailView):
         model = models.BookList
         context_object_name = 'bookdetail'
         template_name = 'books/book_detail.html'
+    
 
     class BookListAdmin(ListView):
         model = models.BookAdmin
@@ -73,8 +69,7 @@ class bookview(View):
             return super().get_queryset().filter(user=self.request.user)
 
 
-
-
+@login_required
 def entry(request):
     form = forms.book_entry()
     if request.method == 'POST':
@@ -99,9 +94,8 @@ def entry(request):
 
 
 
-
+@login_required
 def entry_admin(request):
-
     form2 = forms.book_admin()
     if request.method == 'POST':
         form2 = forms.book_admin(request.POST, request.FILES)  
