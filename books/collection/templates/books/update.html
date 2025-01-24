@@ -12,9 +12,10 @@
 <div class="form-group">
 
 {{ form }}
-<div>
-<label for="{{form.image.id_for_label}}" class="image_label">{{form.image.label}}</label>
-</div>
+
+<!-- <label for="{{form.image.id_for_label}}" class="image_label">{{form.image.label}}</label> -->
+
+
 
 <div class="image_cover_container">
 	{% if form.instance.image %}
@@ -25,9 +26,14 @@
 </div>
 
 {% csrf_token %}
+<input class="file_input" type="file" name="image" id="{{ widget.FileInput }}">
+
+
+{% csrf_token %}
 <input type="submit" class="btn" value="Submit">
 <div class="cancel"><a href="{% url 'collection:list' %}">Cancel</a></div>
 </form>
+
 
 {% else %}
 <h1>No Access</h1>

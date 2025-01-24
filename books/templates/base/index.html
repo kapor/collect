@@ -15,54 +15,22 @@
 		<!-- add htmx to the page -->
 		<script src="{% static 'js/htmx.min.js' %}" defer></script>
 	</head>
-	<body>
+<body>
 
-		{% if user.is_authenticated %}
-		<ul class="nav_bar">
-			<div class="navbar_left">
-				<li><a class="nav_link" href="{% url 'home' %}">Home</a></li>
-				<li><a class="nav_link" href="{% url 'collection:list' %}">Collection</a></li>
-				<li><a class="nav_link" href="{% url 'people' %}">People</a></li>
-				<li><a class="nav_link" href="{% url 'collection:entry' %}">Add</a></li>
-			</div>
-			<div class="navbar_right">
-				<li><a class="nav_link" href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
-				<li><a class="nav_link" href="{% url 'logout' %}">Logout</a></li>
-				<li><a class="nav_link" href="{% url 'profiles:profile' %}">{{ user | capfirst }}</a></li>
-				<li><td>
-					<div class=crop_avatar>
-						{% if user.userinfo.picture %}
-						<img class="photo_avatar" src="{{ user.userinfo.picture.url }}">
-						{% else %}
-						<img class="photo_avatar" src="/media/profile_pics/blank.jpg">
-						{% endif %}
-					</div>
-				</li></td>
-			</div>
-		</ul>
-		{% else %}
-		<ul class="nav_bar">
-			<div class="navbar_left">
-				<li><a class="nav_link" href="{% url 'home' %}">Home</a></li>
-				<li><a class="nav_link" href="{% url 'people' %}">People</a></li>
-			</div>
-			<div class="navbar_right">
-				<li><a class="nav_link" href="{% url 'login' %}">Login</a></li>
-				<li><a class="nav_link" href="{% url 'join' %}">Join</a></li>
-			</div>
-		</ul>
-		{% endif %}
+		
+		{% include 'nav_desktop.html' %} 
 
-			{% block nav_sub %}
-			<!-- ANYTHING OUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND -->
-			{% endblock %}
 
-		<div class="body_block">
-			{% block body_block %}
-			<!-- ANYTHING OUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND -->
-			{% endblock %}
-		</div>
+		{% block nav_sub %}
+		<!-- ANYTHING OUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND -->
+		{% endblock %}
 
-	</body>
+	<div class="body_block">
+		{% block body_block %}
+		<!-- ANYTHING OUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND -->
+		{% endblock %}
+	</div>
+
+</body>
  
 </html>

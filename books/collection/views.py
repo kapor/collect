@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login, logout
 from collection.models import BookList, BookAdmin
@@ -40,7 +41,6 @@ class edit(View):
 
 
 
-
 class bookview(View):
 
     class BookListView(ListView):
@@ -52,11 +52,12 @@ class bookview(View):
         #Below filters items only created by the logged-in user
         def get_queryset(self):
             return super().get_queryset().filter(user=self.request.user)
-
+    
     class BookDetailView(DetailView):
         model = models.BookList
         context_object_name = 'bookdetail'
         template_name = 'books/book_detail.html'
+    
 
     class BookListAdmin(ListView):
         model = models.BookAdmin
@@ -68,8 +69,7 @@ class bookview(View):
             return super().get_queryset().filter(user=self.request.user)
 
 
-
-
+@login_required
 def entry(request):
     form = forms.book_entry()
     if request.method == 'POST':
@@ -94,9 +94,8 @@ def entry(request):
 
 
 
-
+@login_required
 def entry_admin(request):
-
     form2 = forms.book_admin()
     if request.method == 'POST':
         form2 = forms.book_admin(request.POST, request.FILES)  

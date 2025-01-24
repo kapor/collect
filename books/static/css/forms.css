@@ -193,6 +193,14 @@ input[type=file]::file-selector-button {
     cursor: pointer;
 }
 
+.file_input {
+    height: auto;
+    width: -webkit-fill-available;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    margin-top: 6px;
+}
+
 #id_picture,
 #id_image {
     height: auto;
